@@ -1,7 +1,7 @@
 import base64
 import torch
-import numpy as np
-import cv2
+from io import BytesIO
+from PIL import Image
 from torchvision import transforms
 import joblib
 from utils import ctob, nms
@@ -14,9 +14,9 @@ class YoLo:
             transforms.Resize(size=(256,256)),
             transforms.Normalize((0.485, 0.456, 0.406),(0.229, 0.224, 0.225))
         ])
-        im_bytes = base64.b64decode(image)
-        im_arr = np.frombuffer(im_bytes, dtype=np.uint8)  # im_arr is one-dim Numpy array
-        img = cv2.imdecode(im_arr, flags=cv2.IMREAD_COLOR)
+        im_bytes = base64.b64decode(image)  # im_bytes is a binary image
+        im_file = BytesIO(im_bytes)  # convert image to file-like object
+        img = Image.open(im_file)
         self.image = transformer(img).reshape((1,3,256,256))
         self.anchor = torch.tensor([[[0.2788, 0.2163], [0.3750, 0.4760], [0.8966, 0.7837]],
                                     [[0.0721, 0.1466], [0.1490, 0.1082], [0.1418, 0.2861]],
