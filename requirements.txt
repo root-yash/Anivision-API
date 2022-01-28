@@ -1,7 +1,8 @@
+-f https://download.pytorch.org/whl/torch_stable.html
 fastapi==0.73.0
 joblib==1.1.0
 numpy==1.22.1
 opencv_python_headless==4.5.5.62
-torch==1.10.2+cpu -f https://download.pytorch.org/whl/torch_stable.html
-torchvision==0.11.3+cpu -f https://download.pytorch.org/whl/torch_stable.html
+torch==1.10.2+cpu 
+torchvision==0.11.3+cpu 
 uvicorn==0.17.0.post1
