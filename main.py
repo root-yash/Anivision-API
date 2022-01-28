@@ -12,5 +12,3 @@ def read_image(file: bytes = File(...)):
     return {"result": a}
 
 
-if __name__ == "__main__":
-    uvicorn.run(app, port=8000, host='127.0.0.1')
