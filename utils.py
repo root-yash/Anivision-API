@@ -47,7 +47,6 @@ def ctob(predictions, anchor):
     converted_bboxes: the converted boxes of sizes (Batch_size,N*num_anchors*S*S, 1+5) with class index,
                       object score, bounding box coordinates
     """
-
     num_anchors = 3
     converted_bboxes = []
     for i, prediction in enumerate(predictions):
