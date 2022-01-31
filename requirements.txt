@@ -1,7 +1,7 @@
 -f https://download.pytorch.org/whl/torch_stable.html
 fastapi==0.73.0
 joblib==1.1.0
-torchvision==0.9.0+cpu
+torchvision==0.11.3+cpu
 torch==1.8.0+cpu
 uvicorn==0.17.0.post1
 gunicorn==20.1.0
