@@ -1,4 +1,3 @@
-import uvicorn
 from fastapi import FastAPI
 from model import predict_box
 from pydantic import BaseModel
