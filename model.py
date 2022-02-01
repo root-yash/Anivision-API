@@ -8,6 +8,7 @@ from utils import ctob, nms
 
 
 class YoLo:
+
     def __init__(self, image):
         transformer = transforms.Compose([
             transforms.ToTensor(),
