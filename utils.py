@@ -77,7 +77,7 @@ def nms(bboxes,class_dict, threshold, iou_threshold, iou_threshold_o=1.0):
     bboxes_after_nms = []
     if bboxes[1] > threshold:
         chosen_box = bboxes.tolist()
-        chosen_box[0] = class_list[int(chosen_box[0])]
-        bboxes_after_nms.append(chosen_box)
+        bboxes_after_nms.append(class_list[int(chosen_box[0])])
+        bboxes_after_nms+=chosen_box[2:]
     return bboxes_after_nms
 
