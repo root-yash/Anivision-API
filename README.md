@@ -1,5 +1,5 @@
 # Anivision API
-Welcome to Anivision Api , [this](https://anivision-backend.herokuapp.com/ "hosted api link") api is made on fastapi (python) and take input image in __base64__ encoding in json format. It gives the bounding box location and name of the animal. 
+Welcome to Anivision Api , [this](https://anivision-backend.herokuapp.com/ "hosted api link") api is made on fastapi (python) and take input image in __base64__ encoding in json format. It gives the bounding box location and name of the animal. In total there are 398 species and sub-species in total. 
 
 ### Input format
 
