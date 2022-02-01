@@ -38,7 +38,7 @@ class YoLo:
     def getbbox(self):
         prediction = self.predict()
         bboxes = ctob(prediction, self.anchor)
-        prediction = nms(bboxes[0],self.load_classes(), 0.5, 0.5)
+        prediction = nms(bboxes[0],self.load_classes(), 0.05, 0.5)
         return prediction
 
 def predict_box(image):

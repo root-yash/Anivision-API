@@ -73,27 +73,11 @@ def ctob(predictions, anchor):
 
 def nms(bboxes,class_dict, threshold, iou_threshold, iou_threshold_o=1.0):
     class_list = list(class_dict)
-    bboxes = [box for box in bboxes if box[1] > threshold]
-    bboxes = sorted(bboxes, key=lambda x: x[1], reverse=True)
+    bboxes = bboxes[torch.argmax(bboxes[...,1])]
     bboxes_after_nms = []
-
-    while bboxes:
-        chosen_box = bboxes.pop(0)
-        bboxes = [
-            box
-            for box in bboxes
-            if (box[0] != chosen_box[0] and intersection_over_union(
-                torch.tensor(chosen_box[2:]),
-                torch.tensor(box[2:])) < iou_threshold_o
-                )
-               or intersection_over_union(
-                torch.tensor(chosen_box[2:]),
-                torch.tensor(box[2:])) < iou_threshold
-        ]
-
-        chosen_box=chosen_box.tolist()
-        chosen_box[0]=class_list[int(chosen_box[0])]
+    if bboxes[1] > threshold:
+        chosen_box = bboxes.tolist()
+        chosen_box[0] = class_list[int(chosen_box[0])]
         bboxes_after_nms.append(chosen_box)
-
     return bboxes_after_nms
 
